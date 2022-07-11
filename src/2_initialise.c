@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 12:18:27 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/11 10:16:37 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/11 16:17:52 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ t_map	*initialise_map(t_map *map)
 	map->win = mlx_new_window(map->mlx, WIDTH, HEIGHT, "FDF");
 	if (!map->win)
 		handle_errors("unable to create window", map);
-	map->projection = 2;
-	map->scale = 30;
+	map->projection = 0;
+	map->scale = 5;
 	map->points = (t_algo *)malloc(sizeof(t_algo));
 	if (!map->points)
 		handle_errors("unable to malloc for points", map);
@@ -59,5 +59,5 @@ void	initilise_camera_and_colour(t_map *map)
 	colour_codes(map->colour, map);
 	set_z_step(map->colour);
 	set_camera_angle(map);
-	set_camera_point(map, -9, 5, 0);
+	set_camera_point(map, 0, 0, 0);
 }

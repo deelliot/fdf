@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:48:25 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/11 10:16:48 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/11 16:28:10 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	set_camera_angle(t_map *map)
 	{
 		map->camera->alpha = 0.923599;
 		map->camera->beta = 0;
-		map->camera->gamma = -0.7;
+		map->camera->gamma = -0.5;
 	}
 	else
 	{

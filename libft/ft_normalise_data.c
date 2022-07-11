@@ -6,12 +6,11 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:37:05 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/09 10:29:38 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/11 15:50:01 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 /* normalises data to between 0 - 100 */
 

@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 13:44:38 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/09 20:04:12 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/11 16:31:29 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	handle_translation(int key, t_map *map)
 		map->camera->point->z += 10;
 	if (key == OUT)
 		map->camera->point->z -= 10;
+	printf("camera x: %f, y:%f, z:%f\n", map->camera->point->x, map->camera->point->y, map->camera->point->z / map->scale);
 	mlx_clear_window(map->mlx, map->win);
 	window_key(map);
 	plot_points(map);
@@ -37,10 +38,11 @@ void	handle_zoom(int key, t_map *map)
 		map->scale += 5;
 	if (key == ZOOM_OUT)
 	{
-		if (map->scale <= 5)
-			map->scale = 6;
-		map->scale -= 5;
+		if (map->scale <= 1)
+			map->scale =1.5;
+		map->scale -= 0.5;
 	}
+	printf("map scale = %f\n", map->scale);
 	mlx_clear_window(map->mlx, map->win);
 	centre_point(map);
 	window_key(map);
@@ -52,6 +54,10 @@ void	handle_projection(t_map *map)
 	map->projection += 1;
 	if (map->projection == 4)
 		map->projection = 0;
+	if (map->projection == 2)
+		set_camera_point(map, 0, 0, -10);
+	else
+		set_camera_point(map, 0, 0, 0);
 	mlx_clear_window(map->mlx, map->win);
 	centre_point(map);
 	set_camera_angle(map);
@@ -72,7 +78,10 @@ void	handle_rotation(int key, t_map *map)
 	if (key == Z_CLOCK)
 		map->camera->gamma += 0.1;
 	if (key == Z_ANTI)
+	{
 		map->camera->gamma -= 0.1;
+		printf("gamma = %f\n",map->camera->gamma);
+	}
 	mlx_clear_window(map->mlx, map->win);
 	window_key(map);
 	plot_points(map);
