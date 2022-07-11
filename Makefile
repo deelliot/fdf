@@ -6,13 +6,13 @@
 #    By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 10:02:36 by deelliot          #+#    #+#              #
-#    Updated: 2022/07/11 16:51:50 by deelliot         ###   ########.fr        #
+#    Updated: 2022/07/11 17:08:45 by deelliot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = ./src
 INCL_DIR = ./includes
