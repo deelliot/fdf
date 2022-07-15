@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:48:25 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/11 16:28:10 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/14 22:31:24 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	set_camera_angle(t_map *map)
 	{
 		map->camera->alpha = 0.923599;
 		map->camera->beta = 0;
-		map->camera->gamma = -0.5;
+		map->camera->gamma = -0.7;
 	}
 	else
 	{
@@ -53,40 +53,27 @@ void	set_camera_angle(t_map *map)
 	}
 }
 
-double	**ortho(void)
+double	**projection(double angle, t_map *map)
 {
-	double	**ortho;
+	double	**projection;
 
-	ortho = (double **)ft_memallocarray(3, 3);
-	if (!ortho)
+	projection = (double **)ft_memallocarray(3, 3);
+	if (! projection)
 		return (NULL);
-	ortho[0][0] = 1;
-	ortho[0][1] = 0;
-	ortho[0][2] = 0;
-	ortho[1][0] = 0;
-	ortho[1][1] = 1;
-	ortho[1][2] = 0;
-	ortho[2][0] = 0;
-	ortho[2][1] = 0;
-	ortho[2][2] = 0;
-	return (ortho);
-}
-
-double	**cabinet(double angle)
-{
-	double	**cabinet;
-
-	cabinet = (double **)ft_memallocarray(3, 3);
-	if (! cabinet)
-		return (NULL);
-	cabinet[0][0] = 1;
-	cabinet[0][1] = 0;
-	cabinet[0][2] = 0.5 * cos(angle);
-	cabinet[1][0] = 0;
-	cabinet[1][1] = 1;
-	cabinet[1][2] = 0.5 * sin(angle);
-	cabinet[2][0] = 0;
-	cabinet[2][1] = 0;
-	cabinet[2][2] = 0;
-	return (cabinet);
+	projection[0][0] = 1;
+	projection[0][1] = 0;
+	if (map->projection == 3)
+		projection[0][2] = 0.5 * cos(angle);
+	else
+		projection[0][2] = 0;
+	projection[1][0] = 0;
+	projection[1][1] = 1;
+	if (map->projection == 3)
+		projection[1][2] = 0.5 * sin(angle);
+	else
+		projection[1][2] = 0;
+	projection[2][0] = 0;
+	projection[2][1] = 0;
+	projection[2][2] = 0;
+	return (projection);
 }

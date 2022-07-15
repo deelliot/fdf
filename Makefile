@@ -6,7 +6,7 @@
 #    By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 10:02:36 by deelliot          #+#    #+#              #
-#    Updated: 2022/07/11 17:08:45 by deelliot         ###   ########.fr        #
+#    Updated: 2022/07/15 11:13:04 by deelliot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS += 8_rotate.c
 SRCS += 9_projection.c
 SRCS += 10_draw.c
 SRCS += 11_utilities.c
+SRCS += 12_free_map.c
 
 INCL = fdf.h
 
@@ -36,6 +37,7 @@ SRC = $(addprefix $(SRC_DIR)/,$(SRCS))
 INCLS = $(addprefix $(INCL_DIR)/,$(INCL))
 
 LINKS =  -L./libft -lft
+# LINKS +=  -L./minilibx -lmlx -framework OpenGL -framework Appkit
 LINKS += -L /usr/local/lib -lmlx -I /usr/local/include -framework OpenGL -framework AppKit
 
 INCLS = fdf.h
@@ -46,6 +48,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C libft
+	# make -C minilibx
 	@gcc $(CFLAGS) -g -o $(NAME) $(OBJS) -I $(INCL) $(LINKS)
 
 %.o: $(SRC_DIR)/%.c
@@ -54,6 +57,7 @@ $(NAME): $(OBJS)
 clean:
 	rm -f $(OBJS)
 	make clean -C libft/
+	# make clean -C minilibx/
 
 fclean: clean
 	rm -f $(NAME)

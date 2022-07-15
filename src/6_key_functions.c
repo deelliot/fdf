@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 13:44:38 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/11 16:53:30 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/13 16:49:24 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	handle_zoom(int key, t_map *map)
 	if (key == ZOOM_OUT)
 	{
 		if (map->scale <= 1)
-			map->scale =1.5;
+			map->scale = 1.5;
 		map->scale -= 0.5;
 	}
 	mlx_clear_window(map->mlx, map->win);
@@ -76,9 +76,7 @@ void	handle_rotation(int key, t_map *map)
 	if (key == Z_CLOCK)
 		map->camera->gamma += 0.1;
 	if (key == Z_ANTI)
-	{
 		map->camera->gamma -= 0.1;
-	}
 	mlx_clear_window(map->mlx, map->win);
 	window_key(map);
 	plot_points(map);

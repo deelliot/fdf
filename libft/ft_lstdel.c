@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 20:25:47 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/11 14:43:05 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/14 14:18:39 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 		temp = *alst;
 		*alst = temp->next;
 		del (temp->content, temp->content_size);
-		free (temp);
-		temp = NULL;
+		free(*alst);
+		*alst = NULL;
 	}
 }

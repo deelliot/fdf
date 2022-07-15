@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:36:11 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/11 15:36:42 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/14 19:29:30 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static void	store_map(t_map *map)
 	{
 		x = 0;
 		temp = ft_strsplit(map->list->content, ' ');
+		if (!temp)
+			handle_errors("unable to split string", map);
 		while (x < map->col)
 		{
 			map->map[y][x] = ft_atoi(temp[x]);
@@ -42,6 +44,7 @@ static void	store_map(t_map *map)
 	}
 	centre_point(map);
 	ft_lstdel(&map->list, del);
+	free (temp);
 }
 
 void	store_data(int fd, t_map *map)
@@ -68,7 +71,7 @@ void	store_data(int fd, t_map *map)
 		else
 			break ;
 	}
+	free(line);
 	store_map(map);
 	close(fd);
-	free(line);
 }

@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 18:15:21 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/11 16:17:51 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/14 14:33:24 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	handle_reset(t_map *map)
 
 void	esc_program(t_map *map)
 {
-	mlx_destroy_window(map->mlx, map->win);
-	if (map)
-		exit(1);
+	free_map (map);
+	exit(1);
 }

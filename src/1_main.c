@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:38:30 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/11 15:17:23 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/14 15:07:30 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 			ft_putendl("Usage : ./fdf <filename>");
 		else
 			ft_putendl("Error: Too many arguments");
-		return (1);
+		return (0);
 	}
 	map = (t_map *)malloc(sizeof(t_map));
 	if (!map)

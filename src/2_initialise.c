@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 12:18:27 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/11 16:17:52 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/14 14:44:05 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 t_map	*initialise_map(t_map *map)
 {
+	int	i;
+
+	i = 0;
 	map->list = NULL;
 	map->col = 0;
 	map->row = 0;
@@ -28,9 +31,13 @@ t_map	*initialise_map(t_map *map)
 	map->points = (t_algo *)malloc(sizeof(t_algo));
 	if (!map->points)
 		handle_errors("unable to malloc for points", map);
-	map->points->p = (t_point **)malloc(sizeof(t_point) * 3);
-	if (!map->points->p)
-		handle_errors("unable to malloc for points->p", map);
+	while (i < 3)
+	{
+		map->points->p[i] = (t_point *)malloc(sizeof(t_point));
+		if (!map->points->p[i])
+			handle_errors("unable to malloc for p array", map);
+		i++;
+	}
 	return (map);
 }
 

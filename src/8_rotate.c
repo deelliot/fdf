@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:25:42 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/11 15:33:34 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/14 22:26:13 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,24 +90,29 @@ static void	matrix_multi(t_point *point, double **array, t_map *map)
 
 void	rotate_point(t_map *map, t_algo *points)
 {
-	double	**ortho_proj;
-	double	**cabinet_proj;
+	double	**proj;
+	double	**rot_x;
+	double	**rot_y;
+	double	**rot_z;
 	int		i;
 
-	ortho_proj = ortho();
-	cabinet_proj = cabinet(map->camera->alpha);
+	proj = projection(map->camera->alpha, map);
+	rot_x = rotate_x(map->camera->alpha);
+	rot_y = rotate_y(map->camera->beta);
+	rot_z = rotate_z(map->camera->gamma);
 	i = 0;
 	while (i < 3)
 	{
 		translate_point(points->p[i], map->camera);
-		matrix_multi(points->p[i], rotate_z(map->camera->gamma), map);
-		matrix_multi(points->p[i], rotate_x(map->camera->alpha), map);
-		matrix_multi(points->p[i], rotate_y(map->camera->beta), map);
-		if (map->projection == 2)
-			matrix_multi(points->p[i], cabinet_proj, map);
-		else
-			matrix_multi(points->p[i], ortho_proj, map);
+		matrix_multi(points->p[i], rot_z, map);
+		matrix_multi(points->p[i], rot_x, map);
+		matrix_multi(points->p[i], rot_y, map);
+		matrix_multi(points->p[i], proj, map);
 		offset_point(map, points->p[i]);
 		i++;
 	}
+	ft_memdelarray((void **)proj, 3);
+	ft_memdelarray((void **)rot_x, 3);
+	ft_memdelarray((void **)rot_y, 3);
+	ft_memdelarray((void **)rot_z, 3);
 }

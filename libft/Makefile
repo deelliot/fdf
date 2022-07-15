@@ -6,7 +6,7 @@
 #    By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/03 13:04:07 by deelliot          #+#    #+#              #
-#    Updated: 2022/07/11 17:08:46 by deelliot         ###   ########.fr        #
+#    Updated: 2022/07/14 16:38:16 by deelliot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ FUNCTIONS = ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr \
 	ft_lstdelone ft_lstdel ft_lstadd ft_lstiter ft_lstadd_back ft_lstmap \
 	ft_strndup get_next_line ft_abs ft_memallocarray ft_sqrt ft_find_next_sqrt \
 	ft_max ft_print_array ft_count_words ft_strrev ft_normalise_data \
-	rgb_to_hex ft_memdelgrid ft_memdelarray ft_print_list del
+	rgb_to_hex ft_memdelarray ft_print_list del
 
 
 SRCS = $(foreach src, $(FUNCTIONS), $(addsuffix .c, $(src)))

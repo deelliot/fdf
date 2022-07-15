@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 15:53:20 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/11 15:47:41 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/15 11:14:00 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define HEIGHT 720
 
 # include "../libft/libft.h"
+// # include "../minilibx/mlx.h"
 # include "mlx.h"
 # include <math.h>
 # include <stdio.h>
@@ -81,7 +82,7 @@ typedef struct s_col
 
 typedef struct s_algo
 {
-	t_point	**p;
+	t_point	*p[3];
 	double	dx;
 	double	dy;
 	double	step;
@@ -112,7 +113,6 @@ void	initilise_camera_and_colour(t_map *map);
 void	store_data(int fd, t_map *map);
 void	centre_point(t_map *map);
 int		handle_input(int key, t_map *map);
-t_point	*create_p(int x, int y, int z, t_map *map);
 void	offset_point(t_map *map, t_point *point);
 
 /* camera functions */
@@ -131,8 +131,9 @@ void	esc_program(t_map *map);
 
 /* projection functions */
 
-double	**ortho(void);
-double	**cabinet(double angle);
+// double	**ortho(void);
+// double	**cabinet(double angle);
+double	**projection(double angle, t_map *map);
 
 /* colour functions */
 void	colour_codes(t_col *colour, t_map *map);
@@ -146,5 +147,8 @@ void	plot_points(t_map *map);
 void	draw_horizontal_line(t_map *map, t_algo *points);
 void	draw_vertical_line(t_map *map, t_algo *points);
 void	window_key(t_map *map);
+
+void	free_points(t_map *map);
+void	free_map(t_map *map);
 
 #endif

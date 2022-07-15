@@ -5,26 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 15:03:20 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/11 15:38:28 by deelliot         ###   ########.fr       */
+/*   Created: 2022/07/11 13:08:37 by deelliot          #+#    #+#             */
+/*   Updated: 2022/07/14 22:26:40 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdelarray(void *array, size_t y)
+void	ft_memdelarray(void **array, size_t y)
 {
 	size_t	i;
 
-	i = 0;
 	if (!array)
 		return ;
 	if (y == 0)
 		return ;
+	i = 0;
 	while (i < y)
 	{
-		ft_memdel(&(array[y]));
-		y++;
+		free(array[i]);
+		array[i] = NULL;
+		i++;
 	}
+	free (array);
 	array = NULL;
 }
