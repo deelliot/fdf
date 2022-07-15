@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:25:42 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/14 22:26:13 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/15 14:27:17 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static double	**rotate_x(double angle)
 	double	**rot_x;
 
 	rot_x = (double **)ft_memallocarray(3, 3);
-	if (! rot_x)
+	if (!rot_x)
 		return (NULL);
 	rot_x[0][0] = 1;
 	rot_x[0][1] = 0;
@@ -36,7 +36,7 @@ static double	**rotate_y(double angle)
 	double	**rot_y;
 
 	rot_y = (double **)ft_memallocarray(3, 3);
-	if (! rot_y)
+	if (!rot_y)
 		return (NULL);
 	rot_y[0][0] = cos(angle);
 	rot_y[0][1] = 0;
@@ -55,7 +55,7 @@ static double	**rotate_z(double angle)
 	double	**rot_z;
 
 	rot_z = (double **)ft_memallocarray(3, 3);
-	if (! rot_z)
+	if (!rot_z)
 		return (NULL);
 	rot_z[0][0] = cos(angle);
 	rot_z[0][1] = -sin(angle);

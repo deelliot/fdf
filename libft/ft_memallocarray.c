@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:08:41 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/14 15:47:50 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/15 14:22:41 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ void	**ft_memallocarray(size_t x, size_t y)
 	{
 		temp[i] = (void *)malloc(sizeof(*temp) * x);
 		if (temp[i] == NULL)
+		{
+			ft_memdelarray(temp, i - 1);
 			return (NULL);
+		}
+
 		ft_memset(temp[i], '\0', x);
 		i++;
 	}

@@ -6,10 +6,11 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:05:21 by deelliot          #+#    #+#             */
-/*   Updated: 2022/06/02 16:09:54 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/15 17:09:54 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "libft.h"
 
 /* Allocates (with malloc(3)) and returns an array of “fresh” strings
@@ -71,8 +72,6 @@ char	**ft_strsplit(char const *s, char c)
 	words = ft_count_words(s, c);
 	array = (char **)malloc(sizeof(*array) * (words + 1));
 	if (array)
-	{
 		array = ft_assign_array(array, s, c);
-	}
 	return (array);
 }

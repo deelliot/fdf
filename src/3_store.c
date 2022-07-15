@@ -6,11 +6,70 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:36:11 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/14 19:29:30 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/15 17:10:57 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+static int	ft_transpose_array(char const *s, char **array, int i, size_t len)
+{
+	if (len > 0)
+	{
+		array[i] = ft_strsub(s - len, 0, len);
+		if (array[i])
+			return (1);
+		else
+			return (0);
+	}
+	return (1);
+}
+
+static char	**ft_del_array(char **array, int i)
+{
+	while (i--)
+		free (array[i]);
+	free (array);
+	return (NULL);
+}
+
+static char	**ft_assign_array(char **array, char const *s, char c)
+{
+	char	*start;
+	int		i;
+	int		words;
+
+	i = 0;
+	words = ft_count_words(s, c);
+	while (i < words)
+	{
+		while (*s == c && *s)
+			s++;
+		start = (char *)s;
+		while (*s != c && *s)
+			s++;
+		if (ft_transpose_array(s, array, i, s - start) == 0)
+			return (ft_del_array(array, i));
+		i++;
+	}
+	array[i] = NULL;
+	return (array);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**array;
+	int		words;
+
+	if (!s)
+		return (NULL);
+	words = ft_count_words(s, c);
+	array = (char **)malloc(sizeof(*array) * (words + 1));
+	if (array)
+		array = ft_assign_array(array, s, c);
+	return (array);
+}
+
 
 void	centre_point(t_map *map)
 {
@@ -23,7 +82,9 @@ static void	store_map(t_map *map)
 	int		y;
 	int		x;
 	char	**temp;
+	t_list	*temp_list;
 
+	temp_list = map->list;
 	map->map = (int **)ft_memallocarray(map->col, map->row);
 	if (!map->map)
 		handle_errors("unable to malloc for map array", map);
@@ -31,20 +92,22 @@ static void	store_map(t_map *map)
 	while (y < map->row)
 	{
 		x = 0;
-		temp = ft_strsplit(map->list->content, ' ');
+		temp = ft_split(temp_list->content, ' ');
 		if (!temp)
 			handle_errors("unable to split string", map);
 		while (x < map->col)
 		{
 			map->map[y][x] = ft_atoi(temp[x]);
+			free (temp[x]);
 			x++;
 		}
-		map->list = map->list->next;
+		temp_list = temp_list->next;
 		y++;
 	}
-	centre_point(map);
-	ft_lstdel(&map->list, del);
 	free (temp);
+	ft_lstdel(&temp_list, del);
+	map->list = NULL;
+	centre_point(map);
 }
 
 void	store_data(int fd, t_map *map)
@@ -70,8 +133,8 @@ void	store_data(int fd, t_map *map)
 			handle_errors("GNL error", map);
 		else
 			break ;
+		free(line);
 	}
-	free(line);
 	store_map(map);
 	close(fd);
 }
