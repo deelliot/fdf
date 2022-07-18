@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 18:15:21 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/14 14:33:24 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:11:50 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	handle_colour(t_map *map)
 {
+	if (map->colour->min_col)
+		ft_memdel((void *)(&map->colour->min_col));
+	if (map->colour->max_col)
+		ft_memdel((void *)(&map->colour->max_col));
 	map->colour->colour_loop += 1;
 	if (map->colour->colour_loop == 5)
 		map->colour->colour_loop = 0;

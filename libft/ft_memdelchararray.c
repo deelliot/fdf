@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdelarray.c                                   :+:      :+:    :+:   */
+/*   ft_memdelchararray.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 13:08:37 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/17 17:40:07 by deelliot         ###   ########.fr       */
+/*   Created: 2022/07/17 17:34:43 by deelliot          #+#    #+#             */
+/*   Updated: 2022/07/17 17:43:48 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdelarray(void **array, size_t y)
+void	ft_memdelchararray(char ***array)
 {
-	size_t	i;
+	int		i;
+	char	**temp;
 
 	if (!array)
 		return ;
-	if (y == 0)
-		return ;
 	i = 0;
-	while (i < y)
+	temp = *array;
+	while (temp[i])
 	{
-		free(array[i]);
-		array[i] = NULL;
+		free (temp[i]);
+		temp[i] = NULL;
 		i++;
 	}
-	free (array);
-	array = NULL;
+	free (temp);
+	*array = NULL;
 }

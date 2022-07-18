@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 10:56:38 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/13 12:42:16 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:09:45 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	set_colour_step(t_map *map, t_point *p0, t_point *p1, double step)
 	map->colour->step->g = (end->g - start->g) / step;
 	map->colour->step->b = (end->b - start->b) / step;
 	map->colour->colour = rgb_to_hex(start->r, start->g, start->b);
-	free (end);
+	ft_memdel((void *)(&end));
 }
 
 void	set_colour(t_col *colour)

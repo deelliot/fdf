@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 12:18:27 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/15 14:41:42 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/18 09:25:41 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_map	*initialise_map(t_map *map)
 	int	i;
 
 	i = 0;
-	map->list = NULL;
 	map->col = 0;
 	map->row = 0;
 	map->mlx = mlx_init();
@@ -38,6 +37,7 @@ t_map	*initialise_map(t_map *map)
 			handle_errors("unable to malloc for p array", map);
 		i++;
 	}
+	map->camera = NULL;
 	return (map);
 }
 

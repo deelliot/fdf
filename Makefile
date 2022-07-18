@@ -6,7 +6,7 @@
 #    By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 10:02:36 by deelliot          #+#    #+#              #
-#    Updated: 2022/07/15 14:35:47 by deelliot         ###   ########.fr        #
+#    Updated: 2022/07/18 10:37:25 by deelliot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,12 +44,14 @@ INCLS = fdf.h
 
 OBJS = $(SRC:%.c=%.o)
 
+CC = gcc
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C libft
 	# make -C minilibx
-	@gcc $(CFLAGS) -g -o $(NAME) $(OBJS) -I $(INCL) $(LINKS)
+	@$(CC) $(CFLAGS) -g -o $(NAME) $(OBJS) -I $(INCL) $(LINKS)
 
 %.o: $(SRC_DIR)/%.c
 	$(CC) -g -c $(CFLAGS) -o $@ $<

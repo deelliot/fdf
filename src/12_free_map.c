@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 14:46:13 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/14 16:39:31 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:41:07 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	free_cam_and_colour(t_map *map)
 	if (map->camera)
 	{
 		if (map->camera->point)
-			ft_memdel((void **)map->camera->point);
+			ft_memdel((void *)(&map->camera->point));
 		free (map->camera);
 		map->camera = NULL;
 	}
@@ -58,10 +58,6 @@ void	free_map(t_map *map)
 	{
 		if (map->map)
 			ft_memdelarray((void **)map->map, map->row);
-		if (map->list)
-		{
-			ft_lstdel(&map->list, del);
-		}
 		if (map->mlx && map->win)
 			mlx_destroy_window(map->mlx, map->win);
 		if (map->points)

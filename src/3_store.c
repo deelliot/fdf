@@ -6,70 +6,75 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:36:11 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/15 17:10:57 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/18 09:24:37 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static int	ft_transpose_array(char const *s, char **array, int i, size_t len)
+int	open_file(char *argv, t_map *map)
 {
-	if (len > 0)
+	int	fd;
+
+	fd = open(argv, O_RDONLY);
+	if (fd < 0)
+		handle_errors("unable to open file", map);
+	return (fd);
+}
+
+void	get_rows_and_cols(int fd, t_map *map)
+{
+	int		ret;
+	char	*line;
+
+	while (1)
 	{
-		array[i] = ft_strsub(s - len, 0, len);
-		if (array[i])
-			return (1);
+		ret = get_next_line(fd, &line);
+		if (ret == 1)
+		{
+			if (map->col == 0)
+				map->col = ft_count_words(line, ' ');
+			if (ft_count_words(line, ' ') != map->col)
+				handle_errors("invalid map", map);
+			map->row += 1;
+		}
+		else if (ret < 0)
+			handle_errors("GNL error", map);
 		else
-			return (0);
+			break ;
+		free (line);
 	}
-	return (1);
+	close (fd);
 }
 
-static char	**ft_del_array(char **array, int i)
+void	store_map(int fd, t_map *map)
 {
-	while (i--)
-		free (array[i]);
-	free (array);
-	return (NULL);
-}
+	char	*line;
+	int		y;
+	int		x;
+	char	**temp;
 
-static char	**ft_assign_array(char **array, char const *s, char c)
-{
-	char	*start;
-	int		i;
-	int		words;
-
-	i = 0;
-	words = ft_count_words(s, c);
-	while (i < words)
+	map->map = (int **)ft_memallocarray(map->col, map->row);
+	if (!map->map)
+		handle_errors("unable to malloc for map array", map);
+	y = 0;
+	while (get_next_line(fd, &line))
 	{
-		while (*s == c && *s)
-			s++;
-		start = (char *)s;
-		while (*s != c && *s)
-			s++;
-		if (ft_transpose_array(s, array, i, s - start) == 0)
-			return (ft_del_array(array, i));
-		i++;
+		temp = ft_strsplit(line, ' ');
+		x = 0;
+		while (temp[x])
+		{
+			if (ft_strcmp(temp[x], "") == 0)
+				handle_errors("error in file", map);
+			map->map[y][x] = ft_atoi(temp[x]);
+			x++;
+		}
+		ft_memdelchararray(&temp);
+		free (line);
+		y++;
 	}
-	array[i] = NULL;
-	return (array);
+	close (fd);
 }
-
-char	**ft_split(char const *s, char c)
-{
-	char	**array;
-	int		words;
-
-	if (!s)
-		return (NULL);
-	words = ft_count_words(s, c);
-	array = (char **)malloc(sizeof(*array) * (words + 1));
-	if (array)
-		array = ft_assign_array(array, s, c);
-	return (array);
-}
-
 
 void	centre_point(t_map *map)
 {
@@ -77,64 +82,9 @@ void	centre_point(t_map *map)
 	map->y_offset = (HEIGHT - map->row * (map->scale)) / 2;
 }
 
-static void	store_map(t_map *map)
+void	store_data(char *argv, t_map *map)
 {
-	int		y;
-	int		x;
-	char	**temp;
-	t_list	*temp_list;
-
-	temp_list = map->list;
-	map->map = (int **)ft_memallocarray(map->col, map->row);
-	if (!map->map)
-		handle_errors("unable to malloc for map array", map);
-	y = 0;
-	while (y < map->row)
-	{
-		x = 0;
-		temp = ft_split(temp_list->content, ' ');
-		if (!temp)
-			handle_errors("unable to split string", map);
-		while (x < map->col)
-		{
-			map->map[y][x] = ft_atoi(temp[x]);
-			free (temp[x]);
-			x++;
-		}
-		temp_list = temp_list->next;
-		y++;
-	}
-	free (temp);
-	ft_lstdel(&temp_list, del);
-	map->list = NULL;
+	get_rows_and_cols(open_file(argv, map), map);
+	store_map(open_file(argv, map), map);
 	centre_point(map);
-}
-
-void	store_data(int fd, t_map *map)
-{
-	int		ret;
-	char	*line;
-	int		size;
-	t_list	*node;
-
-	while (1)
-	{
-		ret = get_next_line(fd, &line);
-		if (ret == 1)
-		{
-			size = sizeof(char *) * ft_strlen(line);
-			if (map->col == 0)
-				map->col = ft_count_words(line, ' ');
-			node = ft_lstnew(line, size);
-			ft_lstadd_back(&map->list, node);
-			map->row += 1;
-		}
-		else if (ret < 0)
-			handle_errors("GNL error", map);
-		else
-			break ;
-		free(line);
-	}
-	store_map(map);
-	close(fd);
 }

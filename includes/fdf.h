@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 15:53:20 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/15 11:14:00 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:39:55 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # define HEIGHT 720
 
 # include "../libft/libft.h"
-// # include "../minilibx/mlx.h"
 # include "mlx.h"
 # include <math.h>
 # include <stdio.h>
@@ -91,7 +90,6 @@ typedef struct s_algo
 typedef struct s_map
 {
 	int		**map;
-	t_list	*list;
 	int		col;
 	int		row;
 	void	*mlx;
@@ -109,8 +107,9 @@ void	handle_errors(char *str, t_map *map);
 void	set_z_min_max(t_map *map);
 t_map	*initialise_map(t_map *map);
 void	initilise_camera_and_colour(t_map *map);
+void	store_data(char *argv, t_map *map);
 
-void	store_data(int fd, t_map *map);
+void	initilise_camera_and_colour(t_map *map);
 void	centre_point(t_map *map);
 int		handle_input(int key, t_map *map);
 void	offset_point(t_map *map, t_point *point);
@@ -130,9 +129,6 @@ void	handle_reset(t_map *map);
 void	esc_program(t_map *map);
 
 /* projection functions */
-
-// double	**ortho(void);
-// double	**cabinet(double angle);
 double	**projection(double angle, t_map *map);
 
 /* colour functions */

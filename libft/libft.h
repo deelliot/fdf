@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 15:25:23 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/14 16:38:17 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/17 17:42:23 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,13 @@ int		ft_sqrt(int nb);
 int		ft_find_next_sqrt(int nb);
 int		ft_max(int x, int y);
 void	ft_print_array(char **array, int size);
+void	ft_print_int_array(int **array, int y, int x);
 int		ft_count_words(char const *s, char c);
 char	*ft_strrev(char *str);
 double	normalise_data(double min, double max, double num);
 int		rgb_to_hex(int red, int green, int blue);
 void	ft_memdelarray(void **array, size_t y);
+void	ft_memdelchararray(char ***array);
 void	del(void *content, size_t content_size);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:38:30 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/15 14:57:29 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/18 09:25:22 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	main(int argc, char **argv)
 {
-	int		fd;
 	t_map	*map;
 
 	if (argc != 2)
@@ -29,10 +28,7 @@ int	main(int argc, char **argv)
 	if (!map)
 		handle_errors("unable to malloc for map struct", map);
 	map = initialise_map(map);
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		handle_errors("unable to open file", map);
-	store_data(fd, map);
+	store_data(argv[1], map);
 	initilise_camera_and_colour(map);
 	mlx_key_hook(map->win, handle_input, map);
 	window_key(map);
