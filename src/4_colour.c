@@ -6,11 +6,12 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 10:56:38 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/18 10:51:00 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:09:01 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+#include <stdio.h>
 
 /*
 0 = white - red;
@@ -98,4 +99,7 @@ void	set_colour(t_col *colour)
 	colour->current->b += colour->step->b;
 	colour->colour = rgb_to_hex(colour->current->r, colour->current->g, \
 	colour->current->b);
+	if (colour->colour <= 0)
+		colour->colour = rgb_to_hex(colour->min_col->r, colour->min_col->g, \
+		colour->min_col->b);
 }

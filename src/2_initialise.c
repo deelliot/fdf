@@ -6,17 +6,29 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 12:18:27 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/18 09:25:41 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:17:47 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-t_map	*initialise_map(t_map *map)
+static void	initialise_points(t_map *map)
 {
 	int	i;
 
 	i = 0;
+	while (i < 3)
+	{
+		map->points->p[i] = (t_point *)malloc(sizeof(t_point));
+		if (!map->points->p[i])
+			handle_errors("unable to malloc for p array", map);
+		i++;
+	}
+}
+
+t_map	*initialise_map(t_map *map)
+{
+	map->map = NULL;
 	map->col = 0;
 	map->row = 0;
 	map->mlx = mlx_init();
@@ -30,14 +42,9 @@ t_map	*initialise_map(t_map *map)
 	map->points = (t_algo *)malloc(sizeof(t_algo));
 	if (!map->points)
 		handle_errors("unable to malloc for points", map);
-	while (i < 3)
-	{
-		map->points->p[i] = (t_point *)malloc(sizeof(t_point));
-		if (!map->points->p[i])
-			handle_errors("unable to malloc for p array", map);
-		i++;
-	}
+	initialise_points(map);
 	map->camera = NULL;
+	map->colour = NULL;
 	return (map);
 }
 
