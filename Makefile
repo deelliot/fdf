@@ -6,7 +6,7 @@
 #    By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 10:02:36 by deelliot          #+#    #+#              #
-#    Updated: 2022/07/18 10:37:25 by deelliot         ###   ########.fr        #
+#    Updated: 2022/07/18 11:02:50 by deelliot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,4 +72,4 @@ run: re
 
 .PHONY: all fclean clean re
 
-$(V).SILENT:
+# $(V).SILENT:
