@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 18:15:21 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/17 18:11:50 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/18 16:04:37 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ void	handle_colour(t_map *map)
 void	handle_reset(t_map *map)
 {
 	mlx_clear_window(map->mlx, map->win);
+	if (map->colour->min_col)
+		ft_memdel((void *)(&map->colour->min_col));
+	if (map->colour->max_col)
+		ft_memdel((void *)(&map->colour->max_col));
 	map->projection = 0;
 	map->scale = 5;
 	map->colour->colour_loop = 1;
