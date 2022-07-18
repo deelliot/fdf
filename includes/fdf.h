@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 15:53:20 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/18 10:39:55 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:54:51 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 # include <math.h>
-# include <stdio.h>
 
 /* key controls */
 # define UP 13
@@ -104,12 +103,11 @@ typedef struct s_map
 }			t_map;
 
 void	handle_errors(char *str, t_map *map);
-void	set_z_min_max(t_map *map);
 t_map	*initialise_map(t_map *map);
 void	initilise_camera_and_colour(t_map *map);
-void	store_data(char *argv, t_map *map);
 
-void	initilise_camera_and_colour(t_map *map);
+void	store_data(char *argv, t_map *map);
+void	set_z_min_max(t_map *map);
 void	centre_point(t_map *map);
 int		handle_input(int key, t_map *map);
 void	offset_point(t_map *map, t_point *point);
@@ -127,6 +125,7 @@ void	handle_rotation(int key, t_map *map);
 void	handle_colour(t_map *map);
 void	handle_reset(t_map *map);
 void	esc_program(t_map *map);
+void	window_key(t_map *map);
 
 /* projection functions */
 double	**projection(double angle, t_map *map);
@@ -136,15 +135,14 @@ void	colour_codes(t_col *colour, t_map *map);
 void	set_z_step(t_col *colour);
 void	set_colour_step(t_map *map, t_point *p0, t_point *p1, double step);
 void	set_colour(t_col *colour);
-void	set_dz(t_col *colour, t_algo *points);
 
+/* trasform and draw functions */
 void	rotate_point(t_map *map, t_algo *points);
 void	plot_points(t_map *map);
 void	draw_horizontal_line(t_map *map, t_algo *points);
 void	draw_vertical_line(t_map *map, t_algo *points);
-void	window_key(t_map *map);
 
-void	free_points(t_map *map);
+/* free function */
 void	free_map(t_map *map);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:55:41 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/15 14:47:35 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:52:53 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	set_p(int x, int y, t_map *map, t_point *point)
+static void	set_p(int x, int y, t_map *map, t_point *point)
 {
 	point->x = x * map->scale;
 	point->y = y * map->scale;

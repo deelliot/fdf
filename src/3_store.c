@@ -6,13 +6,13 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:36:11 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/18 09:24:37 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:50:15 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int	open_file(char *argv, t_map *map)
+static int	open_file(char *argv, t_map *map)
 {
 	int	fd;
 
@@ -22,7 +22,7 @@ int	open_file(char *argv, t_map *map)
 	return (fd);
 }
 
-void	get_rows_and_cols(int fd, t_map *map)
+static void	get_rows_and_cols(int fd, t_map *map)
 {
 	int		ret;
 	char	*line;
@@ -47,7 +47,7 @@ void	get_rows_and_cols(int fd, t_map *map)
 	close (fd);
 }
 
-void	store_map(int fd, t_map *map)
+static void	store_map(int fd, t_map *map)
 {
 	char	*line;
 	int		y;

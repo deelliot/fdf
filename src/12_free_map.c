@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 14:46:13 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/18 10:41:07 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:54:54 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	free_cam_and_colour(t_map *map)
 	}
 }
 
-void	free_points(t_map *map)
+static void	free_points(t_map *map)
 {
 	int	i;
 
