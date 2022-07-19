@@ -6,7 +6,7 @@
 #    By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 10:02:36 by deelliot          #+#    #+#              #
-#    Updated: 2022/07/18 13:13:05 by deelliot         ###   ########.fr        #
+#    Updated: 2022/07/19 12:32:55 by deelliot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ SRC = $(addprefix $(SRC_DIR)/,$(SRCS))
 INCLS = $(addprefix $(INCL_DIR)/,$(INCL))
 
 LINKS =  -L./libft -lft
-LINKS += -L /usr/local/lib -lmlx -I /usr/local/include -framework OpenGL -framework AppKit
+LINKS +=  -L./minilibx -lmlx -framework OpenGL -framework Appkit
+# LINKS += -L /usr/local/lib -lmlx -I /usr/local/include -framework \
+# 	OpenGL -framework AppKit
 
 INCLS = fdf.h
 
@@ -49,7 +51,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C libft
-	# make -C minilibx
+	make -C minilibx
 	@$(CC) $(CFLAGS) -g -o $(NAME) $(OBJS) -I $(INCL) $(LINKS)
 
 %.o: $(SRC_DIR)/%.c
@@ -58,7 +60,7 @@ $(NAME): $(OBJS)
 clean:
 	rm -f $(OBJS)
 	make clean -C libft/
-	# make clean -C minilibx/
+	make clean -C minilibx/
 
 fclean: clean
 	rm -f $(NAME)
@@ -70,3 +72,5 @@ run: re
 	./fdf test
 
 .PHONY: all fclean clean re
+
+$(V).SILENT:

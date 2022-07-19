@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 15:53:20 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/18 10:54:51 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/19 12:32:01 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # define HEIGHT 720
 
 # include "../libft/libft.h"
-# include "mlx.h"
+# include "../minilibx/mlx.h"
+// # include "mlx.h"
 # include <math.h>
 
 /* key controls */
