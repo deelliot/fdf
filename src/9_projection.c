@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:48:25 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/14 22:31:24 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/19 13:19:52 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,36 @@
 
 void	set_camera_point(t_map *map, double x, double y, double z)
 {
-	map->camera->point->x = x * map->scale;
-	map->camera->point->y = y * map->scale;
-	map->camera->point->z = z * map->scale;
+	map->camera.point.x = x * map->scale;
+	map->camera.point.y = y * map->scale;
+	map->camera.point.z = z * map->scale;
 }
 
 void	set_camera_angle(t_map *map)
 {
 	if (map->projection == 0)
 	{
-		map->camera->alpha = 0.0;
-		map->camera->beta = 0.0;
-		map->camera->gamma = 0.0;
+		map->camera.alpha = 0.0;
+		map->camera.beta = 0.0;
+		map->camera.gamma = 0.0;
 	}
 	else if (map->projection == 1)
 	{
-		map->camera->alpha = 0.615472907;
-		map->camera->beta = 0.785398;
-		map->camera->gamma = 0;
+		map->camera.alpha = 0.615472907;
+		map->camera.beta = 0.785398;
+		map->camera.gamma = 0;
 	}
 	else if (map->projection == 2)
 	{
-		map->camera->alpha = 0.923599;
-		map->camera->beta = 0;
-		map->camera->gamma = -0.7;
+		map->camera.alpha = 0.923599;
+		map->camera.beta = 0;
+		map->camera.gamma = -0.7;
 	}
 	else
 	{
-		map->camera->alpha = 0.523598776;
-		map->camera->beta = 0;
-		map->camera->gamma = 0;
+		map->camera.alpha = 0.523598776;
+		map->camera.beta = 0;
+		map->camera.gamma = 0;
 	}
 }
 

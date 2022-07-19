@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 18:15:21 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/18 16:04:37 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/19 14:27:33 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 void	handle_colour(t_map *map)
 {
-	if (map->colour->min_col)
-		ft_memdel((void *)(&map->colour->min_col));
-	if (map->colour->max_col)
-		ft_memdel((void *)(&map->colour->max_col));
-	map->colour->colour_loop += 1;
-	if (map->colour->colour_loop == 5)
-		map->colour->colour_loop = 0;
+	map->colour.colour_loop += 1;
+	if (map->colour.colour_loop == 5)
+		map->colour.colour_loop = 0;
 	mlx_clear_window(map->mlx, map->win);
-	colour_codes(map->colour, map);
-	set_z_step(map->colour);
+	colour_codes(&map->colour);
+	set_z_step(&map->colour);
 	window_key(map);
 	plot_points(map);
 }
@@ -31,15 +27,11 @@ void	handle_colour(t_map *map)
 void	handle_reset(t_map *map)
 {
 	mlx_clear_window(map->mlx, map->win);
-	if (map->colour->min_col)
-		ft_memdel((void *)(&map->colour->min_col));
-	if (map->colour->max_col)
-		ft_memdel((void *)(&map->colour->max_col));
 	map->projection = 0;
 	map->scale = 5;
-	map->colour->colour_loop = 1;
-	colour_codes(map->colour, map);
-	set_z_step(map->colour);
+	map->colour.colour_loop = 1;
+	colour_codes(&map->colour);
+	set_z_step(&map->colour);
 	centre_point(map);
 	set_camera_angle(map);
 	set_camera_point(map, 0, 0, 0);

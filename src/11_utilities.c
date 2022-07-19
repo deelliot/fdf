@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 12:06:23 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/18 16:14:27 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/19 13:21:26 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ void	set_z_min_max(t_map *map)
 	int	y;
 
 	y = 0;
-	map->colour->z_min = map->map[0][0];
-	map->colour->z_max = map->map[0][0];
+	map->colour.z_min = map->map[0][0];
+	map->colour.z_max = map->map[0][0];
 	while (y < map->row)
 	{
 		x = 0;
 		while (x < map->col)
 		{
-			if (map->colour->z_min > map->map[y][x])
-				map->colour->z_min = map->map[y][x];
-			if (map->colour->z_max < map->map[y][x])
-				map->colour->z_max = map->map[y][x];
+			if (map->colour.z_min > map->map[y][x])
+				map->colour.z_min = map->map[y][x];
+			if (map->colour.z_max < map->map[y][x])
+				map->colour.z_max = map->map[y][x];
 			x++;
 		}
 		y++;
@@ -51,7 +51,7 @@ void	offset_point(t_map *map, t_point *point)
 
 void	translate_point(t_point *point, t_cam *camera)
 {
-	point->x += camera->point->x;
-	point->y += camera->point->y;
-	point->z += camera->point->z;
+	point->x += camera->point.x;
+	point->y += camera->point.y;
+	point->z += camera->point.z;
 }

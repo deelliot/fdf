@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 17:15:59 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/18 11:52:42 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/19 13:20:32 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	draw_horizontal_line(t_map *map, t_algo *points)
 	i = 1;
 	while (i <= points->step)
 	{
-		mlx_pixel_put(map->mlx, map->win, x, y, map->colour->colour);
+		mlx_pixel_put(map->mlx, map->win, x, y, map->colour.colour);
 		x += points->dx;
 		y += points->dy;
-		set_colour(map->colour);
+		set_colour(&map->colour);
 		i++;
 	}
 }
@@ -60,10 +60,10 @@ void	draw_vertical_line(t_map *map, t_algo *points)
 	i = 1;
 	while (i <= points->step)
 	{
-		mlx_pixel_put(map->mlx, map->win, x, y, map->colour->colour);
+		mlx_pixel_put(map->mlx, map->win, x, y, map->colour.colour);
 		x += points->dx;
 		y += points->dy;
-		set_colour(map->colour);
+		set_colour(&map->colour);
 		i++;
 	}
 }

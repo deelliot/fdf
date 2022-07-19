@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 15:53:20 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/19 12:32:01 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:33:13 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_point
 
 typedef struct s_cam
 {
-	t_point	*point;
+	t_point	point;
 	double	alpha;
 	double	beta;
 	double	gamma;
@@ -71,11 +71,11 @@ typedef struct s_col
 	double	z_min;
 	double	z_max;
 	int		colour_loop;
-	t_rgb	*min_col;
-	t_rgb	*max_col;
-	t_rgb	*z_step;
-	t_rgb	*current;
-	t_rgb	*step;
+	t_rgb	min_col;
+	t_rgb	max_col;
+	t_rgb	z_step;
+	t_rgb	current;
+	t_rgb	step;
 	int		colour;
 }				t_col;
 
@@ -98,9 +98,9 @@ typedef struct s_map
 	double	scale;
 	int		x_offset;
 	int		y_offset;
-	t_algo	*points;
-	t_cam	*camera;
-	t_col	*colour;
+	t_algo	points;
+	t_cam	camera;
+	t_col	colour;
 }			t_map;
 
 void	handle_errors(char *str, t_map *map);
@@ -132,7 +132,7 @@ void	window_key(t_map *map);
 double	**projection(double angle, t_map *map);
 
 /* colour functions */
-void	colour_codes(t_col *colour, t_map *map);
+void	colour_codes(t_col *colour);
 void	set_z_step(t_col *colour);
 void	set_colour_step(t_map *map, t_point *p0, t_point *p1, double step);
 void	set_colour(t_col *colour);

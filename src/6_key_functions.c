@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 13:44:38 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/13 16:49:24 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/19 13:16:15 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	handle_translation(int key, t_map *map)
 {
 	if (key == UP)
-		map->camera->point->y -= 10;
+		map->camera.point.y -= 10;
 	if (key == DOWN)
-		map->camera->point->y += 10;
+		map->camera.point.y += 10;
 	if (key == LEFT)
-		map->camera->point->x -= 10;
+		map->camera.point.x -= 10;
 	if (key == RIGHT)
-		map->camera->point->x += 10;
+		map->camera.point.x += 10;
 	if (key == IN)
-		map->camera->point->z += 10;
+		map->camera.point.z += 10;
 	if (key == OUT)
-		map->camera->point->z -= 10;
+		map->camera.point.z -= 10;
 	mlx_clear_window(map->mlx, map->win);
 	window_key(map);
 	plot_points(map);
@@ -66,17 +66,17 @@ void	handle_projection(t_map *map)
 void	handle_rotation(int key, t_map *map)
 {
 	if (key == X_CLOCK)
-		map->camera->alpha += 0.1;
+		map->camera.alpha += 0.1;
 	if (key == X_ANTI)
-		map->camera->alpha -= 0.1;
+		map->camera.alpha -= 0.1;
 	if (key == Y_CLOCK)
-		map->camera->beta += 0.1;
+		map->camera.beta += 0.1;
 	if (key == Y_ANTI)
-		map->camera->beta -= 0.1;
+		map->camera.beta -= 0.1;
 	if (key == Z_CLOCK)
-		map->camera->gamma += 0.1;
+		map->camera.gamma += 0.1;
 	if (key == Z_ANTI)
-		map->camera->gamma -= 0.1;
+		map->camera.gamma -= 0.1;
 	mlx_clear_window(map->mlx, map->win);
 	window_key(map);
 	plot_points(map);

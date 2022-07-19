@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:25:42 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/17 11:45:34 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/19 13:18:56 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,14 @@ void	rotate_point(t_map *map, t_algo *points)
 	double	**rot_z;
 	int		i;
 
-	proj = projection(map->camera->alpha, map);
-	rot_x = rotate_x(map->camera->alpha);
-	rot_y = rotate_y(map->camera->beta);
-	rot_z = rotate_z(map->camera->gamma);
+	proj = projection(map->camera.alpha, map);
+	rot_x = rotate_x(map->camera.alpha);
+	rot_y = rotate_y(map->camera.beta);
+	rot_z = rotate_z(map->camera.gamma);
 	i = 0;
 	while (i < 3)
 	{
-		translate_point(points->p[i], map->camera);
+		translate_point(points->p[i], &map->camera);
 		matrix_multi(points->p[i], rot_z, map);
 		matrix_multi(points->p[i], rot_x, map);
 		matrix_multi(points->p[i], rot_y, map);
