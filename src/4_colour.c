@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 10:56:38 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/19 14:27:31 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 10:18:30 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,11 @@ void	set_colour_step(t_map *map, t_point *p0, t_point *p1, double step)
 	map->colour.step.b = (end.b - start.b) / step;
 	map->colour.colour = rgb_to_hex(start.r, start.g, start.b);
 	map->colour.current = start;
-	printf("colour = %d\n", map->colour.colour);
 }
 
 void	set_colour(t_col *colour)
 {
 	colour->current.r += colour->step.r;
-	printf("colour current r %f += colour step r %f\n",colour->current.r, colour->step.r);
 	colour->current.g += colour->step.g;
 	colour->current.b += colour->step.b;
 	colour->colour = rgb_to_hex(colour->current.r, colour->current.g, \
