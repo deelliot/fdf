@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:25:42 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/19 13:18:56 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:22:53 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	matrix_multi(t_point *point, double **array, t_map *map)
 	double	zt;
 
 	if (!array)
-		handle_errors("unable to malloc for matrix_multi array", map);
+		handle_errors(map);
 	xt = point->x;
 	yt = point->y;
 	zt = point->z;

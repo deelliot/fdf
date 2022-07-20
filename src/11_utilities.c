@@ -6,17 +6,17 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 12:06:23 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/20 10:24:24 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:20:33 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	handle_errors(char *str, t_map *map)
+void	handle_errors(t_map *map)
 {
 	if (map)
 		free_map(map);
-	ft_putendlerror(str);
+	ft_putendlerror("Error");
 	exit (1);
 }
 

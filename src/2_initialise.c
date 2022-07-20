@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 12:18:27 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/20 16:06:08 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:22:14 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	initialise_points(t_map *map)
 	{
 		map->points.p[i] = (t_point *)malloc(sizeof(t_point));
 		if (!map->points.p[i])
-			handle_errors("unable to malloc for p array", map);
+			handle_errors(map);
 		i++;
 	}
 }
@@ -33,10 +33,10 @@ t_map	*initialise_map(t_map *map)
 	map->row = 0;
 	map->mlx = mlx_init();
 	if (!map->mlx)
-		handle_errors("unable to initiate mlx", map);
+		handle_errors(map);
 	map->win = mlx_new_window(map->mlx, WIDTH, HEIGHT, "FDF");
 	if (!map->win)
-		handle_errors("unable to create window", map);
+		handle_errors(map);
 	map->projection = 0;
 	map->scale = 5;
 	map->z_scale = 1;

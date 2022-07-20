@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:36:11 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/18 12:15:01 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:21:58 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	open_file(char *argv, t_map *map)
 
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-		handle_errors("unable to open file", map);
+		handle_errors(map);
 	return (fd);
 }
 
@@ -35,11 +35,11 @@ static void	get_rows_and_cols(int fd, t_map *map)
 			if (map->col == 0)
 				map->col = ft_count_words(line, ' ');
 			if (ft_count_words(line, ' ') != map->col)
-				handle_errors("invalid map", map);
+				handle_errors(map);
 			map->row += 1;
 		}
 		else if (ret < 0)
-			handle_errors("GNL error", map);
+		handle_errors(map);
 		else
 			break ;
 		free (line);
@@ -56,7 +56,7 @@ static void	store_map(int fd, t_map *map)
 
 	map->map = (int **)ft_memallocarray(map->col, map->row);
 	if (!map->map)
-		handle_errors("unable to malloc for map array", map);
+		handle_errors(map);
 	y = 0;
 	while (get_next_line(fd, &line))
 	{
@@ -65,7 +65,7 @@ static void	store_map(int fd, t_map *map)
 		while (temp[x])
 		{
 			if (ft_strcmp(temp[x], "") == 0)
-				handle_errors("error in file", map);
+				handle_errors(map);
 			map->map[y][x] = ft_atoi(temp[x]);
 			x++;
 		}

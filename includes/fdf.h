@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 15:53:20 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/20 15:59:47 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:21:10 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FDF_H
 
 /* screen height and width */
-
 # define WIDTH 1080
 # define HEIGHT 720
 
@@ -90,15 +89,6 @@ typedef struct s_algo
 	double	step;
 }			t_algo;
 
-// typedef struct s_img
-// {
-// 	void	*mlx_img;
-// 	char	*addr;
-// 	int		bpp;
-// 	int		line_len;
-// 	int		endian;
-// }				t_img;
-
 typedef struct s_map
 {
 	int		**map;
@@ -106,7 +96,6 @@ typedef struct s_map
 	int		row;
 	void	*mlx;
 	void	*win;
-	// t_img	image;
 	int		projection;
 	double	scale;
 	double	z_scale;
@@ -117,15 +106,12 @@ typedef struct s_map
 	t_col	colour;
 }			t_map;
 
-void	handle_errors(char *str, t_map *map);
+void	handle_errors(t_map *map);
 t_map	*initialise_map(t_map *map);
 void	initilise_camera_and_colour(t_map *map);
-
 void	store_data(char *argv, t_map *map);
 void	set_z_min_max(t_map *map);
-void	centre_point(t_map *map);
 int		handle_input(int key, t_map *map);
-void	offset_point(t_map *map, t_point *point);
 
 /* camera functions */
 void	translate_point(t_point *point, t_cam *camera);
@@ -143,7 +129,7 @@ void	handle_reset(t_map *map);
 void	esc_program(t_map *map);
 void	window_key(t_map *map);
 
-/* projection functions */
+/* projection function */
 double	**projection(double angle, t_map *map);
 
 /* colour functions */
@@ -153,6 +139,8 @@ void	set_colour_step(t_map *map, t_point *p0, t_point *p1, double step);
 void	set_colour(t_col *colour);
 
 /* trasform and draw functions */
+void	centre_point(t_map *map);
+void	offset_point(t_map *map, t_point *point);
 void	rotate_point(t_map *map, t_algo *points);
 void	plot_points(t_map *map);
 void	draw_horizontal_line(t_map *map, t_algo *points);

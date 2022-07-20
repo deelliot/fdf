@@ -6,7 +6,7 @@
 #    By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 10:02:36 by deelliot          #+#    #+#              #
-#    Updated: 2022/07/20 10:24:49 by deelliot         ###   ########.fr        #
+#    Updated: 2022/07/20 16:17:14 by deelliot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,9 +67,6 @@ fclean: clean
 	make fclean -C libft/
 
 re: fclean all
-
-run: re
-	./fdf test
 
 .PHONY: all fclean clean re
 
