@@ -6,11 +6,28 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 17:15:59 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/19 13:20:32 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:09:27 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+// void	create_image(t_img *image)
+// {
+// 	image->mlx_img = mlx_new_image(map->mlx, WIDTH, HEIGHT);
+// 		if (!image->mlx_img)
+// 			handle_errors("unable to create image", map);
+// 	image->addr = mlx_get_data_addr(image->mlx_img, &image->bpp, \
+// 	&image->line_len, &image->endian);
+// 	printf("bpp: %d || line_len: %d || endian: %d\n",image->bpp, image->line_len, image->endian);
+// }
+
+// void	img_pix_put(t_img *image, int x, int y, int colour)
+// {
+// 	char *pixel;
+
+// 	pixel = image->addr + ((y * image->line_len) + (x * (image->bpp / 8)));
+// }
 
 void	draw_horizontal_line(t_map *map, t_algo *points)
 {

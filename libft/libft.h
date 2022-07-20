@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 15:25:23 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/18 16:13:39 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:53:14 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# define BUFF_SIZE 8
+# define BUFF_SIZE 800
 # define MAX_FD 4096
 
 typedef struct s_list

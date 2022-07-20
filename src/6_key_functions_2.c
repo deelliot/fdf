@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 18:15:21 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/20 10:23:48 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:06:11 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	handle_reset(t_map *map)
 	mlx_clear_window(map->mlx, map->win);
 	map->projection = 0;
 	map->scale = 5;
+	map->z_scale = 1;
 	map->colour.colour_loop = 1;
 	colour_codes(&map->colour);
 	set_z_step(&map->colour);

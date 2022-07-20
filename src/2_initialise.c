@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 12:18:27 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/19 14:27:35 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:06:08 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_map	*initialise_map(t_map *map)
 		handle_errors("unable to create window", map);
 	map->projection = 0;
 	map->scale = 5;
+	map->z_scale = 1;
 	initialise_points(map);
 	return (map);
 }

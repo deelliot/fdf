@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 13:44:38 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/19 13:16:15 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:06:02 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,34 @@ void	handle_translation(int key, t_map *map)
 void	handle_zoom(int key, t_map *map)
 {
 	if (key == ZOOM_IN)
+	{
 		map->scale += 5;
+		map->z_scale += 5;
+	}
 	if (key == ZOOM_OUT)
 	{
 		if (map->scale <= 1)
 			map->scale = 1.5;
 		map->scale -= 0.5;
+		if (map->z_scale <= 1)
+			map->z_scale = 1.5;
+		map->z_scale -= 0.5;
+	}
+	mlx_clear_window(map->mlx, map->win);
+	centre_point(map);
+	window_key(map);
+	plot_points(map);
+}
+
+void	handle_height(int key, t_map *map)
+{
+	if (key == INC_HEIGHT)
+		map->z_scale += 1;
+	if (key == DEC_HEIGHT)
+	{
+		if (map->z_scale <= 1)
+			map->z_scale = 2;
+		map->z_scale -= 1;
 	}
 	mlx_clear_window(map->mlx, map->win);
 	centre_point(map);

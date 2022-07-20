@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:55:41 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/19 13:23:38 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:02:50 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	set_p(int x, int y, t_map *map, t_point *point)
 {
 	point->x = x * map->scale;
 	point->y = y * map->scale;
-	point->z = map->map[y][x] * map->scale;
+	point->z = map->map[y][x] * map->z_scale;
 	point->norm_z = normalise_data(map->colour.z_min, map->colour.z_max, \
 	map->map[y][x]);
 }

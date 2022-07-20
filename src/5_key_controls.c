@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:02:49 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/17 18:00:21 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:29:43 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	handle_input(int key, t_map *map)
 		handle_translation(key, map);
 	if (key == ZOOM_IN || key == ZOOM_OUT)
 		handle_zoom(key, map);
+	if (key == INC_HEIGHT || key == DEC_HEIGHT)
+		handle_height(key, map);
 	if (key == PROJECTION)
 		handle_projection(map);
 	if (key == X_CLOCK || key == X_ANTI || key == Y_CLOCK || key == Y_ANTI || \
@@ -35,7 +37,7 @@ int	handle_input(int key, t_map *map)
 
 void	window_key(t_map *map)
 {
-	char	*str[9];
+	char	*str[10];
 	int		i;
 
 	str[0] = "MOVE:          W, S, A, D";
@@ -46,7 +48,8 @@ void	window_key(t_map *map)
 	str[5] = "COLOUR:        SPACE";
 	str[6] = "RESET:         ENTER";
 	str[7] = "Z-AXIS:        ARROW KEYS";
-	str[8] = "QUIT:          ESC";
+	str[8] = "HEIGHT         G and H";
+	str[9] = "QUIT:          ESC";
 	i = 0;
 	while (i < 8)
 	{

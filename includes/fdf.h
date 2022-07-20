@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 15:53:20 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/20 10:24:56 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:59:47 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <math.h>
 
 /* key controls */
+# define KEY_DOWN 2
 # define UP 13
 # define DOWN 1
 # define RIGHT 2
@@ -42,6 +43,8 @@
 # define ZOOM_OUT 31
 # define COLOUR 49
 # define RESET 36
+# define INC_HEIGHT 4
+# define DEC_HEIGHT 5
 
 typedef struct s_point
 {
@@ -87,6 +90,15 @@ typedef struct s_algo
 	double	step;
 }			t_algo;
 
+// typedef struct s_img
+// {
+// 	void	*mlx_img;
+// 	char	*addr;
+// 	int		bpp;
+// 	int		line_len;
+// 	int		endian;
+// }				t_img;
+
 typedef struct s_map
 {
 	int		**map;
@@ -94,8 +106,10 @@ typedef struct s_map
 	int		row;
 	void	*mlx;
 	void	*win;
+	// t_img	image;
 	int		projection;
 	double	scale;
+	double	z_scale;
 	int		x_offset;
 	int		y_offset;
 	t_algo	points;
@@ -121,6 +135,7 @@ void	set_camera_angle(t_map *map);
 /* key functions */
 void	handle_translation(int key, t_map *map);
 void	handle_zoom(int key, t_map *map);
+void	handle_height(int key, t_map *map);
 void	handle_projection(t_map *map);
 void	handle_rotation(int key, t_map *map);
 void	handle_colour(t_map *map);
