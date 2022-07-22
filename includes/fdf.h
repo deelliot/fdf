@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 15:53:20 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/20 16:21:10 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/22 14:57:50 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 # define HEIGHT 720
 
 # include "../libft/libft.h"
-# include "../minilibx/mlx.h"
-// # include "mlx.h"
+# include "mlx.h"
 # include <math.h>
 
 /* key controls */
@@ -110,6 +109,7 @@ void	handle_errors(t_map *map);
 t_map	*initialise_map(t_map *map);
 void	initilise_camera_and_colour(t_map *map);
 void	store_data(char *argv, t_map *map);
+void	centre_point(t_map *map);
 void	set_z_min_max(t_map *map);
 int		handle_input(int key, t_map *map);
 

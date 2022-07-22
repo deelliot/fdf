@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:02:49 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/20 15:29:43 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/22 10:28:57 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	window_key(t_map *map)
 	str[8] = "HEIGHT         G and H";
 	str[9] = "QUIT:          ESC";
 	i = 0;
-	while (i < 8)
+	while (i < 10)
 	{
 		mlx_string_put(map->mlx, map->win, 20, 20 + (i * 15), 0xFFFFFF, str[i]);
 		i++;

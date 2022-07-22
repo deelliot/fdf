@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:36:11 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/20 16:21:58 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/22 14:57:46 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	get_rows_and_cols(int fd, t_map *map)
 			map->row += 1;
 		}
 		else if (ret < 0)
-		handle_errors(map);
+			handle_errors(map);
 		else
 			break ;
 		free (line);
@@ -47,39 +47,48 @@ static void	get_rows_and_cols(int fd, t_map *map)
 	close (fd);
 }
 
+static void	store(char *line, t_map *map, int y)
+{
+	char	**temp;
+	int		x;
+
+	temp = ft_strsplit(line, ' ');
+	if (!temp)
+		handle_errors(map);
+	x = 0;
+	while (temp[x])
+	{
+		if (ft_strcmp(temp[x], "") == 0)
+			handle_errors(map);
+		map->map[y][x] = ft_atoi(temp[x]);
+		x++;
+	}
+	ft_memdelchararray(&temp);
+}
+
 static void	store_map(int fd, t_map *map)
 {
 	char	*line;
 	int		y;
-	int		x;
-	char	**temp;
 
 	map->map = (int **)ft_memallocarray(map->col, map->row);
 	if (!map->map)
 		handle_errors(map);
 	y = 0;
-	while (get_next_line(fd, &line))
+	while (1)
 	{
-		temp = ft_strsplit(line, ' ');
-		x = 0;
-		while (temp[x])
+		if (get_next_line(fd, &line) == 1)
 		{
-			if (ft_strcmp(temp[x], "") == 0)
-				handle_errors(map);
-			map->map[y][x] = ft_atoi(temp[x]);
-			x++;
+			store(line, map, y);
+			free (line);
+			y++;
 		}
-		ft_memdelchararray(&temp);
-		free (line);
-		y++;
+		else if (get_next_line(fd, &line) < 0)
+			handle_errors(map);
+		else
+			break ;
 	}
 	close (fd);
-}
-
-void	centre_point(t_map *map)
-{
-	map->x_offset = (WIDTH - (map->col * map->scale)) / 2;
-	map->y_offset = (HEIGHT - map->row * (map->scale)) / 2;
 }
 
 void	store_data(char *argv, t_map *map)

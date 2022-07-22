@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:38:30 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/20 16:19:07 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/22 14:57:48 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putendl("Usage : ./fdf <filename>");
+		ft_putendlerror("Usage : ./fdf <filename>");
 		return (0);
 	}
 	initialise_map(&map);

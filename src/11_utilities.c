@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 12:06:23 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/20 16:20:33 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/22 14:57:27 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,10 @@ void	translate_point(t_point *point, t_cam *camera)
 	point->x += camera->point.x;
 	point->y += camera->point.y;
 	point->z += camera->point.z;
+}
+
+void	centre_point(t_map *map)
+{
+	map->x_offset = (WIDTH - (map->col * map->scale)) / 2;
+	map->y_offset = (HEIGHT - map->row * (map->scale)) / 2;
 }
