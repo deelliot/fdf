@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:36:11 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/20 16:21:58 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/22 12:00:48 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	get_rows_and_cols(int fd, t_map *map)
 			map->row += 1;
 		}
 		else if (ret < 0)
-		handle_errors(map);
+			handle_errors(map);
 		else
 			break ;
 		free (line);
