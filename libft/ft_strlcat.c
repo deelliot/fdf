@@ -6,17 +6,17 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 10:46:25 by deelliot          #+#    #+#             */
-/*   Updated: 2022/03/08 10:47:34 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/25 11:26:23 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* strlcpy() copies up to dstsize - 1 characters from the string src to dst,
+/* ft_strlcpy() copies up to dstsize - 1 characters from the string src to dst,
 NUL-terminating the result if dstsize is not 0.
 
-strlcat() appends string src to the end of dst.  It will append at most
-dstsize - strlen(dst) - 1 characters.  It will then NUL-terminate, unless
+ft_strlcat() appends string src to the end of dst.  It will append at most
+dstsize - ft_strlen(dst) - 1 characters.  It will then NUL-terminate, unless
 dstsize is 0 or the original dst string was longer than dstsize (in
 practice this should not happen as it means that either dstsize is
 incorrect or that dst is not a proper string).*/
