@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 12:06:23 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/22 14:57:27 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/25 11:10:58 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	handle_errors(t_map *map)
 {
 	if (map)
 		free_map(map);
-	ft_putendlerror("Error");
+	ft_stderror("Error");
 	exit (1);
 }
 

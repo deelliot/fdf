@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendlerror.c                                  :+:      :+:    :+:   */
+/*   ft_stderror.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:12:10 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/18 16:14:11 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/25 11:10:42 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* Outputs the string s to the standard error followed by a ’\n’.*/
 
-void	ft_putendlerror(char const *s)
+void	ft_stderror(char const *s)
 {
 	if (!s)
 		return ;

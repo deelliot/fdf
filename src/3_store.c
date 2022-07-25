@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:05:37 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/22 15:05:47 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/25 11:16:14 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static void	store_map(int fd, t_map *map)
 {
 	char	*line;
 	int		y;
+	int		ret;
 
 	map->map = (int **)ft_memallocarray(map->col, map->row);
 	if (!map->map)
@@ -77,13 +78,14 @@ static void	store_map(int fd, t_map *map)
 	y = 0;
 	while (1)
 	{
-		if (get_next_line(fd, &line) == 1)
+		ret = get_next_line(fd, &line);
+		if (ret == 1)
 		{
 			store(line, map, y);
 			free (line);
 			y++;
 		}
-		else if (get_next_line(fd, &line) < 0)
+		else if (ret < 0)
 			handle_errors(map);
 		else
 			break ;

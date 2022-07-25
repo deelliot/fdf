@@ -6,7 +6,7 @@
 /*   By: deelliot <deelliot@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 15:25:23 by deelliot          #+#    #+#             */
-/*   Updated: 2022/07/20 13:53:14 by deelliot         ###   ########.fr       */
+/*   Updated: 2022/07/25 11:10:35 by deelliot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ int		rgb_to_hex(int red, int green, int blue);
 void	ft_memdelarray(void **array, size_t y);
 void	ft_memdelchararray(char ***array);
 void	del(void *content, size_t content_size);
-void	ft_putendlerror(char const *s);
+void	ft_stderror(char const *s);
 
 #endif
